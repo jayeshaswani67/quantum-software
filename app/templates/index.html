@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>QuantumLab — Quantum Intelligence Platform</title>
+
+    <link
+        rel="stylesheet"
+        href="/static/css/style.css"
+    >
+</head>
+
+<body>
+
+<div class="app-shell">
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div class="brand">
+
+            <div class="brand-mark">
+                Q
+            </div>
+
+            <div>
+                <div class="brand-name">
+                    QuantumLab
+                </div>
+
+                <div class="brand-version">
+                    QUANTUM OS
+                </div>
+            </div>
+
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <div class="nav-label">
+                WORKSPACE
+            </div>
+
+            <button
+                class="nav-item active"
+                data-section="experiment"
+            >
+                <span>⌬</span>
+                Experiment
+            </button>
+
+            <button
+                class="nav-item"
+                data-section="circuit"
+            >
+                <span>◈</span>
+                Circuit
+            </button>
+
+            <button
+                class="nav-item"
+                data-section="intelligence"
+            >
+                <span>✦</span>
+                Intelligence
+            </button>
+
+            <button
+                class="nav-item"
+                data-section="history"
+            >
+                <span>◷</span>
+                History
+            </button>
+
+
+            <div class="nav-label nav-label-spaced">
+                RESOURCES
+            </div>
+
+            <button
+                class="nav-item"
+                id="docsBtn"
+            >
+                <span>▣</span>
+                Documentation
+            </button>
+
+            <button
+                class="nav-item"
+                id="apiBtn"
+            >
+                <span>⌘</span>
+                API
+            </button>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <div class="system-status">
+
+                <span class="status-dot"></span>
+
+                <div>
+                    <strong>Local Simulator</strong>
+                    <small>Operational</small>
+                </div>
+
+            </div>
+
+            <div class="sidebar-footer">
+                QuantumLab v0.2
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="main">
+
+        <!-- TOPBAR -->
+
+        <header class="topbar">
+
+            <div class="mobile-brand">
+                QuantumLab
+            </div>
+
+            <div class="breadcrumb">
+                Workspace
+                <span>/</span>
+                Quantum Experiment
+            </div>
+
+
+            <div class="topbar-actions">
+
+                <div class="connection">
+
+                    <span class="status-dot"></span>
+
+                    API Connected
+
+                </div>
+
+
+                <div class="qubit-indicator">
+
+                    <span>Q</span>
+
+                    <strong id="qubitCount">
+                        2
+                    </strong>
+
+                    Qubits
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- ================= CONTENT ================= -->
+
+        <section class="content">
+
+            <!-- HERO -->
+
+            <div class="hero">
+
+                <div>
+
+                    <div class="eyebrow">
+                        QUANTUM COMPUTING ENVIRONMENT
+                    </div>
+
+                    <h1>
+                        Run quantum experiments.
+                        <br>
+                        Understand the results.
+                    </h1>
+
+                    <p>
+                        Build circuits, simulate quantum systems,
+                        and use Quantum Intelligence to understand
+                        what happened inside your experiment.
+                    </p>
+
+                </div>
+
+
+                <div class="hero-actions">
+
+                    <button
+                        class="secondary-btn"
+                        id="resetBtn"
+                    >
+                        Reset
+                    </button>
+
+                    <button
+                        class="primary-btn"
+                        id="runBtn"
+                    >
+                        <span>▶</span>
+                        Run Experiment
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= EXPERIMENT ================= -->
+
+            <section
+                class="workspace-section"
+                id="experimentSection"
+            >
+
+                <div class="section-title">
+
+                    <div>
+                        <span class="section-number">
+                            01
+                        </span>
+
+                        <h2>
+                            Experiment
+                        </h2>
+                    </div>
+
+                    <span class="section-description">
+                        Configure and execute your quantum circuit
+                    </span>
+
+                </div>
+
+
+                <!-- GATE TOOLBAR -->
+
+                <div class="gate-toolbar">
+
+                    <div class="toolbar-heading">
+                        GATES
+                    </div>
+
+
+                    <button
+                        class="gate-btn"
+                        data-gate="H"
+                    >
+                        <strong>H</strong>
+                        <span>Hadamard</span>
+                    </button>
+
+
+                    <button
+                        class="gate-btn"
+                        data-gate="X"
+                    >
+                        <strong>X</strong>
+                        <span>Pauli-X</span>
+                    </button>
+
+
+                    <button
+                        class="gate-btn"
+                        data-gate="Y"
+                    >
+                        <strong>Y</strong>
+                        <span>Pauli-Y</span>
+                    </button>
+
+
+                    <button
+                        class="gate-btn"
+                        data-gate="Z"
+                    >
+                        <strong>Z</strong>
+                        <span>Pauli-Z</span>
+                    </button>
+
+
+                    <button
+                        class="gate-btn"
+                        data-gate="CX"
+                    >
+                        <strong>CX</strong>
+                        <span>CNOT</span>
+                    </button>
+
+
+                    <div class="toolbar-divider"></div>
+
+
+                    <div class="shots-control">
+
+                        <label for="shotsInput">
+                            SHOTS
+                        </label>
+
+                        <input
+                            id="shotsInput"
+                            type="number"
+                            value="1000"
+                            min="100"
+                            max="10000"
+                            step="100"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- CIRCUIT CARD -->
+
+                <div
+                    class="card circuit-card"
+                    id="circuitSection"
+                >
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <span class="card-kicker">
+                                QUANTUM CIRCUIT
+                            </span>
+
+                            <h3>
+                                Bell State
+                            </h3>
+
+                        </div>
+
+
+                        <div class="circuit-meta">
+
+                            <span>
+                                2 Qubits
+                            </span>
+
+                            <span>
+                                •
+                            </span>
+
+                            <span>
+                                2 Classical Bits
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="circuit-area">
+
+                        <div class="wire-label">
+                            q0
+                        </div>
+
+                        <div class="wire">
+
+                            <div class="gate-box">
+                                H
+                            </div>
+
+                            <div class="control-dot"></div>
+
+                            <div class="connector-line"></div>
+
+                            <div class="measurement-box">
+                                M
+                            </div>
+
+                        </div>
+
+
+                        <div class="wire-label">
+                            q1
+                        </div>
+
+                        <div class="wire">
+
+                            <div class="vertical-connector"></div>
+
+                            <div class="target-gate">
+                                X
+                            </div>
+
+                            <div class="measurement-box">
+                                M
+                            </div>
+
+                        </div>
+
+
+                        <div class="classical-register">
+
+                            <span>c0</span>
+
+                            <div class="classical-wire"></div>
+
+                            <span>c1</span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="circuit-equation">
+
+                        <span>
+                            Initial state
+                        </span>
+
+                        <strong>
+                            |00⟩
+                        </strong>
+
+                        <span>
+                            →
+                        </span>
+
+                        <strong>
+                            H ⊗ I
+                        </strong>
+
+                        <span>
+                            →
+                        </span>
+
+                        <strong>
+                            CX
+                        </strong>
+
+                        <span>
+                            →
+                        </span>
+
+                        <strong>
+                            (|00⟩ + |11⟩) / √2
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <!-- RESULTS GRID -->
+
+                <div class="results-grid">
+
+                    <!-- MEASUREMENTS -->
+
+                    <div class="card results-card">
+
+                        <div class="card-header">
+
+                            <div>
+
+                                <span class="card-kicker">
+                                    MEASUREMENTS
+                                </span>
+
+                                <h3>
+                                    Probability distribution
+                                </h3>
+
+                            </div>
+
+                            <span
+                                class="live-badge"
+                                id="resultStatus"
+                            >
+                                READY
+                            </span>
+
+                        </div>
+
+
+                        <div class="probability-list">
+
+                            <div class="probability-row">
+
+                                <div class="state-name">
+                                    |00⟩
+                                </div>
+
+                                <div class="probability-track">
+
+                                    <div
+                                        class="probability-fill"
+                                        id="bar00"
+                                        style="width: 0%"
+                                    ></div>
+
+                                </div>
+
+                                <div
+                                    class="probability-value"
+                                    id="prob00"
+                                >
+                                    0%
+                                </div>
+
+                            </div>
+
+
+                            <div class="probability-row">
+
+                                <div class="state-name">
+                                    |01⟩
+                                </div>
+
+                                <div class="probability-track">
+
+                                    <div
+                                        class="probability-fill"
+                                        id="bar01"
+                                        style="width: 0%"
+                                    ></div>
+
+                                </div>
+
+                                <div
+                                    class="probability-value"
+                                    id="prob01"
+                                >
+                                    0%
+                                </div>
+
+                            </div>
+
+
+                            <div class="probability-row">
+
+                                <div class="state-name">
+                                    |10⟩
+                                </div>
+
+                                <div class="probability-track">
+
+                                    <div
+                                        class="probability-fill"
+                                        id="bar10"
+                                        style="width: 0%"
+                                    ></div>
+
+                                </div>
+
+                                <div
+                                    class="probability-value"
+                                    id="prob10"
+                                >
+                                    0%
+                                </div>
+
+                            </div>
+
+
+                            <div class="probability-row">
+
+                                <div class="state-name">
+                                    |11⟩
+                                </div>
+
+                                <div class="probability-track">
+
+                                    <div
+                                        class="probability-fill"
+                                        id="bar11"
+                                        style="width: 0%"
+                                    ></div>
+
+                                </div>
+
+                                <div
+                                    class="probability-value"
+                                    id="prob11"
+                                >
+                                    0%
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="result-summary">
+
+                            <span>
+                                Total shots
+                            </span>
+
+                            <strong id="totalShots">
+                                1000
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- STATE -->
+
+                    <div class="card state-card">
+
+                        <div class="card-header">
+
+                            <div>
+
+                                <span class="card-kicker">
+                                    QUANTUM STATE
+                                </span>
+
+                                <h3>
+                                    State representation
+                                </h3>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="state-visual">
+
+                            <div class="psi">
+                                ψ
+                            </div>
+
+                            <div class="state-equation">
+                                <span>
+                                    1
+                                </span>
+
+                                <span class="fraction-line"></span>
+
+                                <span>
+                                    √2
+                                </span>
+
+                            </div>
+
+                            <div class="state-basis">
+                                ( |00⟩ + |11⟩ )
+                            </div>
+
+                        </div>
+
+
+                        <div class="state-description">
+
+                            The Bell state creates a strong
+                            correlation between both qubits.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= INTELLIGENCE ================= -->
+
+            <section
+                class="workspace-section"
+                id="intelligenceSection"
+            >
+
+                <div class="section-title">
+
+                    <div>
+
+                        <span class="section-number">
+                            02
+                        </span>
+
+                        <h2>
+                            Quantum Intelligence
+                        </h2>
+
+                    </div>
+
+                    <span class="section-description">
+                        Understand your experiment automatically
+                    </span>
+
+                </div>
+
+
+                <div class="card intelligence-card">
+
+                    <div class="intelligence-header">
+
+                        <div class="intelligence-icon">
+                            ✦
+                        </div>
+
+                        <div>
+
+                            <span class="card-kicker">
+                                ANALYSIS ENGINE
+                            </span>
+
+                            <h3>
+                                Quantum Intelligence
+                            </h3>
+
+                            <p>
+                                Automated interpretation of your
+                                quantum experiment.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="intelligence-grid">
+
+                        <div class="classification-box">
+
+                            <span class="label">
+                                CLASSIFICATION
+                            </span>
+
+                            <h4 id="classification">
+                                Waiting for experiment
+                            </h4>
+
+                        </div>
+
+
+                        <div class="most-likely-box">
+
+                            <span class="label">
+                                MOST LIKELY STATE
+                            </span>
+
+                            <div class="likely-state">
+
+                                <strong id="likelyState">
+                                    —
+                                </strong>
+
+                                <span id="likelyProbability">
+                                    —
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="intelligence-details">
+
+                        <div class="intelligence-section">
+
+                            <span class="label">
+                                ANALYSIS
+                            </span>
+
+                            <p id="analysisText">
+                                Run a quantum experiment to
+                                generate an automated analysis.
+                            </p>
+
+                        </div>
+
+
+                        <div class="intelligence-section">
+
+                            <span class="label">
+                                RECOMMENDATION
+                            </span>
+
+                            <p id="recommendationText">
+                                Your next experiment will
+                                appear here.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <button
+                        class="analyze-btn"
+                        id="analyzeBtn"
+                    >
+                        ✦ Analyze Experiment
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= CONSOLE ================= -->
+
+            <section
+                class="workspace-section"
+                id="historySection"
+            >
+
+                <div class="section-title">
+
+                    <div>
+
+                        <span class="section-number">
+                            03
+                        </span>
+
+                        <h2>
+                            Experiment Console
+                        </h2>
+
+                    </div>
+
+                    <button
+                        class="text-btn"
+                        id="clearConsoleBtn"
+                    >
+                        Clear console
+                    </button>
+
+                </div>
+
+
+                <div class="console">
+
+                    <div class="console-header">
+
+                        <div class="console-dots">
+
+                            <span></span>
+                            <span></span>
+                            <span></span>
+
+                        </div>
+
+                        <span>
+                            quantumlab://console
+                        </span>
+
+                    </div>
+
+
+                    <div
+                        class="console-body"
+                        id="consoleOutput"
+                    >
+
+                        <div class="console-line">
+
+                            <span class="console-time">
+                                [system]
+                            </span>
+
+                            QuantumLab initialized.
+
+                        </div>
+
+                        <div class="console-line">
+
+                            <span class="console-time">
+                                [system]
+                            </span>
+
+                            Local Qiskit simulator ready.
+
+                        </div>
+
+                        <div class="console-line">
+
+                            <span class="console-time">
+                                [system]
+                            </span>
+
+                            Waiting for experiment...
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </section>
+
+
+        <!-- FOOTER -->
+
+        <footer class="footer">
+
+            <span>
+                QuantumLab
+            </span>
+
+            <span>
+                Built with FastAPI + Qiskit + Aer
+            </span>
+
+            <span>
+                Local Quantum Simulation
+            </span>
+
+        </footer>
+
+    </main>
+
+</div>
+
+
+<script src="/static/js/quantum.js"></script>
+
+</body>
+</html>
